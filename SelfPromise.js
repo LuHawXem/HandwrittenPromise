@@ -24,7 +24,7 @@ class PromiseReaction {
 
 /**
  * @param {SelfPromise} promise 需要resolve的promise
- * @param {*} x 用于resolve的值,可以是普通值,也可以是thenable或另一个promise
+ * @param {any} x 用于resolve的值,可以是普通值,也可以是thenable或另一个promise
  * @param {Function} resolve 回调的resolve函数,可以不为promise的resolve函数(在递归调用时)
  * @param {Function} reject 回调的reject函数,可以不为promise的resolve函数(在递归调用时)
  * @returns {void}
@@ -73,7 +73,7 @@ function resolvePromise(promise, x, resolve, reject) {
 
 /**
  * @param {PromiseReaction} reactions 回调链表
- * @param {*} result 结果值
+ * @param {any} result 结果值
  * @param {String} status promise的状态
  * @returns {void}
  */
@@ -118,7 +118,7 @@ class SelfPromise {
         self.reactions_or_result = null;
 
         /**
-         * @param {*} value 
+         * @param {any} value 
          */
         function fulfill(value) {
             self.status = PromiseState.kFulfilled;
@@ -128,7 +128,7 @@ class SelfPromise {
         }
 
         /**
-         * @param {*} value 
+         * @param {any} value 
          */
         function resolve(value) {
             if(self.status === PromiseState.kPending) {
@@ -137,7 +137,7 @@ class SelfPromise {
         }
 
         /**
-         * @param {*} reason 
+         * @param {any} reason 
          */
         function reject(reason) {
             if(self.status === PromiseState.kPending) {
@@ -156,8 +156,8 @@ class SelfPromise {
     }
 
     /**
-     * @param {*} onFulfilled resolve的处理函数或undefined
-     * @param {*} onRejected reject的处理函数或undefined
+     * @param {any} onFulfilled resolve的处理函数或undefined
+     * @param {any} onRejected reject的处理函数或undefined
      * @returns {SelfPromise}
      */
     then(onFulfilled, onRejected) {
@@ -215,7 +215,7 @@ class SelfPromise {
     }
 
     /**
-     * @param {*} onRejected 
+     * @param {any} onRejected 
      * @returns {SelfPromise}
      */
     catch(onRejected) {
@@ -223,7 +223,7 @@ class SelfPromise {
     }
 
     /**
-     * @param {*} value 
+     * @param {any} value 
      * @returns {SelfPromise}
      */
     static resolve(value) {
@@ -236,7 +236,7 @@ class SelfPromise {
     }
 
     /**
-     * @param {*} reason 
+     * @param {any} reason 
      * @returns {SelfPromise}
      */
     static reject(reason) {
