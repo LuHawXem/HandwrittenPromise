@@ -1,0 +1,1 @@
+使用JavaScript原生API实现符合Promise/A+规范的Promise类，尽量对原生Promise行为进行模仿
